@@ -1,0 +1,15 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: local_mysql8.0
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./db/mysql_data:/var/lib/mysql
+      - ./logs:/var/log/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+    restart: always
